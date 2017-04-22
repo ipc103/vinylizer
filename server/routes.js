@@ -32,7 +32,7 @@ router.get('/spotify/callback', (req, res) => {
   spotifyApi.setAccessToken(access_token);
   spotifyApi.setRefreshToken(refresh_token);
 
-  res.redirect(`/user/${access_token}/${refresh_token}`);
+  res.redirect(`/users/${access_token}/${refresh_token}`);
   })
   .catch(err => {
     res.redirect('/error/invalid_token');
