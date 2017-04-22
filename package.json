@@ -9,10 +9,12 @@
     "express": "^4.15.2",
     "http-proxy": "^1.16.2",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "spotify-web-api-node": "^2.3.6"
   },
   "scripts": {
-    "start": "react-scripts start & node server.js",
+    "start": "react-scripts start",
+    "poststart": "nodemon server/app.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
