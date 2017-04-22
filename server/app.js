@@ -17,7 +17,6 @@ var client = process.env.CLIENT_URL;
 app.use('/', routes)
 
 app.all("/*", function(req, res) {
-    console.log('redirecting to Server1');
     apiProxy.web(req, res, {target: client});
 });
 
