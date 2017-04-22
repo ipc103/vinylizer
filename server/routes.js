@@ -34,7 +34,25 @@ router.get('/login', (_, res) => {
 
 router.get('/spotify/callback', (req, res) => {
   console.log("Hit the callback URL")
-  res.redirect('/users')
+
+  spotifyApi.authorizationCodeGrant(req.query.code).then(data => {
+  const { expires_in, access_token, refresh_token } = data.body;
+
+  // Set the access token on the API object to use it in later calls
+  spotifyApi.setAccessToken(access_token);
+  spotifyApi.setRefreshToken(refresh_token);
+
+  // use the access token to access the Spotify Web API
+  spotifyApi.getMe().then(({ body }) => {
+    console.log(body);
+  });
+
+  // we can also pass the token to the browser to make requests from there
+  res.redirect(`/#/user/${access_token}/${refresh_token}`);
+  })
+  .catch(err => {
+    res.redirect('/#/error/invalid token');
+  });
 });
 
 module.exports = router;
