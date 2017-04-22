@@ -1,3 +1,5 @@
+require('./env.js')
+
 var express   = require('express'),
     httpProxy = require('http-proxy'),
     app       = express(),
@@ -10,7 +12,7 @@ var app      = express();
 var httpProxy = require('http-proxy');
 var apiProxy = httpProxy.createProxyServer();
 
-var client = 'http://localhost:3000';
+var client = process.env.CLIENT_URL;
 
 app.use('/', routes)
 
