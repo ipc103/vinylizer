@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, browserHistory} from 'react-router'
 
-import App from './components/App'
-import TopTracks from './components/TopTracks'
+import { createStore, applyMiddleware } from 'redux'
+import { Provider } from 'react-redux'
+import thunk from 'redux-thunk'
+
+import rootReducer from './reducers'
+import Router from './routes'
+
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <Router history={browserHistory}>
-    <Route path="/" component={App} />
-    <Route path="/users/:accessToken/:refreshToken" component={TopTracks} />
-  </Router>,
+  < Provider store={store}>
+    < Router />
+  </Provider>,
   document.getElementById('root')
 );
