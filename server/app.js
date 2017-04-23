@@ -1,4 +1,4 @@
-require('./env.js')
+require('./env.dev.js')
 
 var express   = require('express'),
     httpProxy = require('http-proxy'),
