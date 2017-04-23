@@ -1,4 +1,5 @@
 import topTracks from '../../src/reducers/topTracks'
+import { FETCH_TRACKS } from '../../src/actions/types'
 
 describe('the top tracks reducer', () => {
   it('returns an empty array by default', () =>{
@@ -8,7 +9,7 @@ describe('the top tracks reducer', () => {
 
   it('can fetch a list of top tracks', () => {
     let tracks = [{id: 1, name: 'Work'}, {id: 2, name: 'Fire to the Rain'}]
-    let state = topTracks([], {type: 'FETCH_TRACKS', payload: tracks})
+    let state = topTracks([], {type: FETCH_TRACKS, payload: tracks})
     expect(state).toEqual(tracks)
   })
 
