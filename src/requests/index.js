@@ -1,11 +1,15 @@
 import axios from 'axios'
 
 const BASE_URL =  'https://api.spotify.com/v1'
-const tracksUrl = `${BASE_URL}/me/top/tracks`
 
 export function getTopTracks(){
   setAccessToken()
-  return axios.get(tracksUrl)
+  return axios.get(`${BASE_URL}/me/top/tracks`)
+}
+
+export function getTopArtists(){
+  setAccessToken()
+  return axios.get(`${BASE_URL}/me/top/artists`)
 }
 
 function setAccessToken(){
