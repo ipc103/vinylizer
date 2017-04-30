@@ -12,6 +12,13 @@ export function getTopArtists(){
   return axios.get(`${BASE_URL}/me/top/artists`)
 }
 
+export function getRecommendations(opts){
+  setAccessToken()
+  const {artistSeeds} = opts
+  const url = `${BASE_URL}/recommendations/?seed_artists=${artistSeeds.join(',')}&limit=100`
+  return axios.get(url)
+}
+
 function setAccessToken(){
   const accessToken = sessionStorage.getItem('accessToken');
   axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;

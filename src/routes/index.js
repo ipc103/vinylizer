@@ -4,7 +4,8 @@ import {Router, Route, browserHistory} from 'react-router'
 import {authenticate} from '../components/decorators'
 import App from '../components/App'
 import TrackList from '../components/TrackList'
-import ArtistList from '../components/ArtistList'
+import TopArtistsPage from '../containers/TopArtistsPage'
+import RecommendedArtistsPage from '../containers/RecommendedArtistsPage'
 
 export default () => {
   return (
@@ -12,7 +13,8 @@ export default () => {
       <Route path="/" component={App} />
       <Route path="/users/:accessToken/:refreshToken"  onEnter={setAccessToken} />
       <Route path="/top-tracks" component={authenticate(TrackList)} />
-      <Route path="/top-artists" component={authenticate(ArtistList)} />
+      <Route path="/top-artists" component={authenticate(TopArtistsPage)} />
+      <Route path="/recommended" component={authenticate(RecommendedArtistsPage)} />
     </Router>
   )
 }
