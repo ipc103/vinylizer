@@ -8,6 +8,10 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers'
 import Router from './routes'
 
+import { fetchDiscoverWeeklyTracks } from './actions'
+
+fetchDiscoverWeeklyTracks()()
+
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(

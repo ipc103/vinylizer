@@ -1,4 +1,5 @@
-import { getTopTracks, getTopArtists, getRecommendations } from '../requests'
+import axios from 'axios'
+import { getTopTracks, getTopArtists, getRecommendations, getPlaylists } from '../requests'
 import { FETCH_TRACKS, FETCH_TOP_ARTISTS, UPDATE_SEEDS, FETCH_RECOMMENDED_TRACKS } from './types'
 
 export function fetchTopTracks(){
@@ -28,5 +29,16 @@ export function fetchRecommendedMusic(seedIds){
       .then( res => {
         dispatch({type: FETCH_RECOMMENDED_TRACKS, payload: res.data.tracks})
       })
+  }
+}
+
+export function fetchDiscoverWeeklyTracks(){
+  return dispatch => {
+    getPlaylists()
+      .then( res => {
+        const playlist = res.data.items.find(pl => pl.name === 'Discover Weekly')
+        return axios.get(playlist.tracks.href)
+      })
+      .then(console.log)
   }
 }

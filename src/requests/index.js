@@ -19,6 +19,11 @@ export function getRecommendations(opts){
   return axios.get(url)
 }
 
+export function getPlaylists(){
+  setAccessToken()
+  return axios.get(`${BASE_URL}/me/playlists`)
+}
+
 function setAccessToken(){
   const accessToken = sessionStorage.getItem('accessToken');
   axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;

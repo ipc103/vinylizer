@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 
 import {fetchTopArtists, fetchRecommendedMusic} from '../actions'
-import TrackList from '../components/TrackList'
 
 class RecommendedArtistsPage extends Component {
 
